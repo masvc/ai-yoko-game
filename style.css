@@ -1,0 +1,59 @@
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-family: "MisakiGothic", sans-serif;
+}
+
+#gameCanvas {
+  border: 1px solid black;
+}
+
+#controls {
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+  margin-top: 10px;
+}
+
+#score,
+#time {
+  font-size: 24px;
+  margin: 10px;
+}
+
+button {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  font-size: 16px;
+  font-weight: bold;
+  background-color: #f0f0f0;
+  border: 2px solid #333;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #ccc;
+}
+
+@media (max-width: 768px) {
+  #gameCanvas {
+    width: 100%;
+    height: auto;
+  }
+  #controls {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  #score,
+  #time {
+    font-size: 20px;
+  }
+  button {
+    width: 60px;
+    height: 60px;
+    margin: 5px;
+  }
+}
