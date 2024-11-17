@@ -11,6 +11,7 @@
 ## ③ アプリのデプロイ URL
 
 - ## デプロイ URL は以下の通りです。
+- https://masvc.github.io/ai-yoko-game/
 
 ## ④ アプリのログイン用 ID または Password（ある場合）
 
