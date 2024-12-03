@@ -3,57 +3,297 @@ body {
   flex-direction: column;
   align-items: center;
   font-family: "MisakiGothic", sans-serif;
+  background: linear-gradient(135deg, #1a2a6c, #b21f1f, #fdbb2d);
+  min-height: 100vh;
+  margin: 0;
+  padding: 20px;
+}
+
+.game-container {
+  background: rgba(255, 255, 255, 0.9);
+  padding: 20px;
+  border-radius: 20px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
 }
 
 #gameCanvas {
-  border: 1px solid black;
+  border: 3px solid #333;
+  border-radius: 10px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
 }
 
-#controls {
+.status-container {
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   width: 100%;
-  margin-top: 10px;
+  margin-bottom: 15px;
 }
 
 #score,
 #time {
-  font-size: 24px;
-  margin: 10px;
+  font-size: 28px;
+  font-weight: bold;
+  color: #fff;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+  padding: 10px 20px;
+  background: rgba(0, 0, 0, 0.6);
+  border-radius: 30px;
+  margin: 0;
+}
+
+#controls {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin-top: 20px;
 }
 
 button {
-  width: 80px;
-  height: 80px;
+  width: 100px;
+  height: 100px;
   border-radius: 50%;
-  font-size: 16px;
+  font-size: 18px;
   font-weight: bold;
-  background-color: #f0f0f0;
-  border: 2px solid #333;
+  border: none;
   cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+}
+
+#startButton {
+  background: linear-gradient(145deg, #2ecc71, #27ae60);
+  color: white;
+}
+
+#jumpButton {
+  background: linear-gradient(145deg, #3498db, #2980b9);
+  color: white;
+}
+
+#resetButton {
+  background: linear-gradient(145deg, #e74c3c, #c0392b);
+  color: white;
 }
 
 button:hover {
-  background-color: #ccc;
+  transform: translateY(-3px);
+  box-shadow: 0 6px 8px rgba(0, 0, 0, 0.3);
+}
+
+button:active {
+  transform: translateY(2px);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.combo-text {
+  animation: comboScale 0.5s ease;
+  color: #ffd700;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+@keyframes comboScale {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.5);
+  }
+  100% {
+    transform: scale(1);
+  }
 }
 
 @media (max-width: 768px) {
+  .game-container {
+    padding: 10px;
+    width: 100%;
+    max-width: 500px;
+  }
+
   #gameCanvas {
     width: 100%;
     height: auto;
+    min-height: 200px;
+    max-height: 300px;
+    object-fit: contain;
   }
+
   #controls {
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: center;
+    display: flex;
+    justify-content: space-around;
+    gap: 10px;
+    margin-top: 10px;
+    padding: 0 10px;
   }
+
+  button {
+    width: 80px;
+    height: 80px;
+    font-size: 16px;
+  }
+
+  .status-container {
+    margin: 10px 0;
+  }
+
   #score,
   #time {
     font-size: 20px;
+    padding: 8px 15px;
   }
+
+  .controls-info {
+    font-size: 14px;
+    padding: 10px;
+    margin-bottom: 10px;
+  }
+}
+
+/* さらに小さい画面用 */
+@media (max-width: 480px) {
+  .game-container {
+    padding: 5px;
+  }
+
+  #gameCanvas {
+    min-height: 150px;
+    max-height: 250px;
+  }
+
   button {
+    width: 70px;
+    height: 70px;
+    font-size: 14px;
+  }
+
+  #score,
+  #time {
+    font-size: 16px;
+    padding: 5px 10px;
+  }
+}
+
+/* 横向き対応の修正 */
+@media (orientation: landscape) and (max-width: 900px) {
+  body {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 20px;
+    padding: 10px;
+  }
+
+  .game-container {
+    flex: 1;
+    max-width: 70%;
+  }
+
+  .ranking-container {
+    width: 30%;
+    margin-top: 0;
+  }
+
+  #gameCanvas {
+    max-height: 70vh;
+  }
+}
+
+.ranking-container {
+  background: rgba(255, 255, 255, 0.9);
+  padding: 20px;
+  border-radius: 20px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+  margin-top: 20px;
+  width: 800px;
+  max-width: 90%;
+}
+
+.ranking-container h2 {
+  color: #333;
+  text-align: center;
+  margin-bottom: 15px;
+  font-size: 24px;
+}
+
+.ranking-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.ranking-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+  background: rgba(0, 0, 0, 0.6);
+  border-radius: 10px;
+  color: white;
+}
+
+.ranking-position {
+  font-size: 20px;
+  font-weight: bold;
+  color: #ffd700;
+}
+
+.ranking-score {
+  font-size: 20px;
+}
+
+@media (max-width: 768px) {
+  .ranking-container {
+    width: 100%;
+    padding: 10px;
+  }
+
+  .ranking-item {
+    padding: 8px 16px;
+  }
+
+  .ranking-position,
+  .ranking-score {
+    font-size: 16px;
+  }
+}
+
+/* 操作説明のスタイル */
+.controls-info {
+  background: rgba(0, 0, 0, 0.6);
+  color: white;
+  padding: 10px 20px;
+  border-radius: 10px;
+  margin-bottom: 15px;
+}
+
+.controls-info p {
+  margin: 5px 0;
+  font-weight: bold;
+}
+
+.controls-info ul {
+  list-style: none;
+  padding: 0;
+  margin: 5px 0 15px 0;
+}
+
+.controls-info li {
+  margin: 5px 0;
+  padding-left: 15px;
+}
+
+/* モバイル用のタッチコントロール */
+@media (max-width: 768px) {
+  #controls {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+  }
+
+  #moveLeft,
+  #moveRight {
     width: 60px;
     height: 60px;
-    margin: 5px;
+    font-size: 24px;
   }
 }

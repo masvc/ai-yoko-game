@@ -16,13 +16,37 @@
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <div id="score">Score: 0</div>
-    <div id="time">Time: 15</div>
-    <canvas id="gameCanvas" width="800" height="400"></canvas>
-    <div id="controls">
-      <button id="startButton">Start</button>
-      <button id="jumpButton">Jump</button>
-      <button id="resetButton">Reset</button>
+    <div class="game-container">
+      <div class="controls-info">
+        <p>操作方法:</p>
+        <ul>
+          <li>← →: 左右移動</li>
+          <li>↑ またはスペース: ジャンプ（2段ジャンプ可能）</li>
+        </ul>
+        <p>スコアシステム:</p>
+        <ul>
+          <li>りんご: +1点</li>
+          <li>スライム: -1点</li>
+          <li>コンボボーナス: 連続ゲットで最大5倍</li>
+        </ul>
+      </div>
+      <div class="status-container">
+        <div id="score">Score: 0</div>
+        <div id="time">Time: 30</div>
+      </div>
+      <canvas id="gameCanvas" width="800" height="400"></canvas>
+      <div id="controls">
+        <button id="startButton">Start</button>
+        <button id="jumpButton">Jump</button>
+        <button id="resetButton">Reset</button>
+      </div>
+    </div>
+
+    <div class="ranking-container">
+      <h2>ハイスコアランキング</h2>
+      <div class="ranking-list" id="rankingList">
+        <!-- JavaScriptで動的に追加 -->
+      </div>
     </div>
     <script src="game.js"></script>
   </body>
